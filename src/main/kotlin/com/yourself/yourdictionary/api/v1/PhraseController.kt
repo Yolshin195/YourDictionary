@@ -15,20 +15,19 @@ import org.springframework.data.web.PageableDefault
 
 @RestController
 @RequestMapping("/phrase")
-@Tag(name = "Фразы", description = "Управление фразами")
+@Tag(name = "Phrases", description = "Manage phrases")
 class PhraseController(
     private val phraseService: PhraseService
 ) {
 
     @PostMapping
-    @Operation(summary = "Создать фразу", description = "Создаёт новую фразу и возвращает её")
+    @Operation(summary = "Create phrase", description = "Creates a new phrase and returns it")
     fun create(@RequestBody data: CreatePhraseDTO): ResponseEntity<PhraseDTO> {
-        println("Приняли фразу: $data")
         return ResponseEntity.status(HttpStatus.CREATED).body(phraseService.create(data))
     }
 
     @GetMapping
-    @Operation(summary = "Получить список фраз с пагинацией")
+    @Operation(summary = "Get paginated list of phrases")
     fun getAll(
         @PageableDefault(size = 20) pageable: Pageable
     ): ResponseEntity<Page<PhraseDTO>> {
