@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: YourDictionary
+  security:
+    user:
+      name: admin
+      password: admin

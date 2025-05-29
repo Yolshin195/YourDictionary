@@ -11,18 +11,23 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.web.PageableDefault
+import org.springframework.jms.core.JmsTemplate
 
 
 @RestController
 @RequestMapping("/phrase")
 @Tag(name = "Phrases", description = "Manage phrases")
 class PhraseController(
-    private val phraseService: PhraseService
+    private val phraseService: PhraseService,
+    private val jmsTemplate: JmsTemplate
 ) {
 
     @PostMapping
     @Operation(summary = "Create phrase", description = "Creates a new phrase and returns it")
     fun create(@RequestBody data: CreatePhraseDTO): ResponseEntity<PhraseDTO> {
+        data.englishText?.let {
+            jmsTemplate.convertAndSend("phrase.create.queue", it)
+        }
         return ResponseEntity.status(HttpStatus.CREATED).body(phraseService.create(data))
     }
 
