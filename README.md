@@ -4,8 +4,6 @@
 
 YourDictionary is a Kotlin + Spring Boot project that provides a REST API for managing phrases. It supports pagination and includes Swagger UI for easy API exploration.
 
----
-
 ## How to Run
 
 1. **Build and start the application using Docker Compose:**
@@ -26,8 +24,6 @@ docker-compose logs -f
 docker-compose down
 ```
 
----
-
 ## API Documentation
 
 Once the application is running, open your browser and navigate to:
@@ -36,8 +32,6 @@ Once the application is running, open your browser and navigate to:
 
 Here you can explore the API endpoints, send test requests, and see request/response models.
 
----
-
 ## Project Structure
 
 * `api` — REST controllers
@@ -45,19 +39,13 @@ Here you can explore the API endpoints, send test requests, and see request/resp
 * `dto` — Data transfer objects
 * `repository` — Database access (JPA repositories)
 
----
-
 ## Requirements
 
 * Docker & Docker Compose installed on your machine
 * Java 21 (if running locally without Docker)
 * Internet connection to download dependencies on first build
 
----
-
 ## Troubleshooting
 
 * If ports are busy, change the exposed port in `docker-compose.yml`.
 * For database resets, clear volumes or change DB config (if applicable).
-
----
