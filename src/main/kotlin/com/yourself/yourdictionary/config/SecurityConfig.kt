@@ -23,6 +23,9 @@ class SecurityConfig(private val userDetailsService: UserDetailsService) {
             formLogin { }
             httpBasic { }
         }
+
+        http.userDetailsService(userDetailsService)
+
         return http.build()
     }
 }

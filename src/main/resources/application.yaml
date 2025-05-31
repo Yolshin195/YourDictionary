@@ -5,3 +5,7 @@ spring:
     user:
       name: admin
       password: admin
+
+telegram:
+  bot:
+    token: ${TELEGRAM_BOT_TOKEN}

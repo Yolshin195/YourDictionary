@@ -18,6 +18,10 @@ data class PhraseEntity(
     @Column(nullable = false)
     val createdAt: LocalDateTime = LocalDateTime.now(),
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)  // связь «многие к одному», не null
+    @JoinColumn(name = "author_id", nullable = false)     // колонка с FK в таблице phrases
+    val author: UserProfileEntity,
+
     @OneToMany(mappedBy = "phrase", cascade = [CascadeType.ALL], fetch = FetchType.LAZY, orphanRemoval = true)
     var translations: MutableList<TranslationEntity> = mutableListOf()
 )

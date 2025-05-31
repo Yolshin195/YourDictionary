@@ -13,6 +13,10 @@ data class TranslationEntity(
     @JoinColumn(name = "phrase_id", nullable = false)
     val phrase: PhraseEntity,
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)  // связь «многие к одному», не null
+    @JoinColumn(name = "author_id", nullable = false)     // колонка с FK в таблице phrases
+    val author: UserProfileEntity,
+
     @Column(nullable = false)
     val language: String,               // 'ru', 'th', и т.д.
 

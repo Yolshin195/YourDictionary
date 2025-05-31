@@ -5,16 +5,18 @@ import com.yourself.yourdictionary.dto.phrase.PhraseDTO
 import com.yourself.yourdictionary.dto.translation.TranslationDTO
 import com.yourself.yourdictionary.entity.PhraseEntity
 import com.yourself.yourdictionary.entity.TranslationEntity
+import com.yourself.yourdictionary.entity.UserProfileEntity
 import com.yourself.yourdictionary.mapper.PhraseMapper
 import org.springframework.stereotype.Component
 
 
 @Component
 class PhraseMapperImpl : PhraseMapper {
-    override fun toEntity(dto: CreatePhraseDTO): PhraseEntity {
+    override fun toEntity(dto: CreatePhraseDTO, author: UserProfileEntity): PhraseEntity {
         val phrase = PhraseEntity(
             englishText = dto.englishText,
             note = dto.note,
+            author = author
         )
 
         val translations = dto.translations.map {
@@ -22,7 +24,8 @@ class PhraseMapperImpl : PhraseMapper {
                 translatedText = it.translatedText,
                 language = it.language,
                 note = it.note,
-                phrase = phrase // важный момент!
+                phrase = phrase, // важный момент!
+                author = author
             )
         }
 

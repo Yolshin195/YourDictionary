@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.yourself"
-version = "0.0.4-SNAPSHOT"
+version = "0.0.5-SNAPSHOT"
 
 java {
 	toolchain {
@@ -29,6 +29,8 @@ dependencies {
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
 	implementation("org.springframework.boot:spring-boot-starter-artemis")
 	implementation("org.mapstruct:mapstruct:1.6.3")
+	implementation("org.telegram:telegrambots-springboot-longpolling-starter:8.3.0")
+	implementation("org.telegram:telegrambots-client:8.3.0")
 	runtimeOnly("com.h2database:h2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
